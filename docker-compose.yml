@@ -15,9 +15,10 @@ services:
       RABBIT_HOST: rabbitmq
       QUEUE_NAME: queue_a
       TARGET_QUEUE: queue_b
-    # STAGE 5: Uncomment this for persistence demonstration
-    #volumes:
-      #- chat-history:/app/data
+
+    volumes:
+      - chat-history:/app/data
+
     networks:
       - chat-net
     depends_on:
@@ -32,9 +33,10 @@ services:
       RABBIT_HOST: rabbitmq
       QUEUE_NAME: queue_b
       TARGET_QUEUE: queue_a
-    # STAGE 5: Uncomment this for persistence demonstration
-    #volumes:
-     #- chat-history:/app/data
+
+    volumes:
+      - chat-history:/app/data
+
     networks:
       - chat-net
     depends_on:
@@ -44,6 +46,5 @@ networks:
   chat-net:
     driver: bridge
 
-# STAGE 5: Uncomment this section for persistence demonstration
-#volumes:
-  #chat-history:
+volumes:
+  chat-history:
